@@ -3745,11 +3745,6 @@ parcel-bundler@^1.12.4:
     v8-compile-cache "^2.0.0"
     ws "^5.1.1"
 
-parcel-plugin-json-url-loader@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/parcel-plugin-json-url-loader/-/parcel-plugin-json-url-loader-0.1.2.tgz#41f365607b8fed4990f773779646ddcce413678b"
-  integrity sha512-O3dJMS1DfiTEfYR2Y+Owc3xrut/ekc6dR1o6gjYfOH1MoPSTJDagWsaq2D0jBHAOwkYNAf4nEipkXaVYDihEtg==
-
 parcel-plugin-static-files-copy@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/parcel-plugin-static-files-copy/-/parcel-plugin-static-files-copy-2.6.0.tgz#06d7d9b6d7e2071b2e261315e94209b522108beb"

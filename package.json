@@ -6,16 +6,11 @@
     "build:parcel": "parcel build index.html --no-minify --no-source-maps --public-url ./",
     "build": "npm run clean && npm run build:parcel"
   },
-  "staticFiles": {
-    "staticPath": "static",
-    "watcherGlob": "**"
-  },
   "dependencies": {
     "imagesloaded": "^4.1.4",
     "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
-    "parcel-plugin-json-url-loader": "^0.1.2",
     "parcel-plugin-static-files-copy": "^2.6.0"
   }
 }
