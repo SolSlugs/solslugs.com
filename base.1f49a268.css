@@ -139,23 +139,39 @@ footer.frame {
 	font-weight: 400;
 }
 
-.frame__counter {
+.intro__hint {
 	margin: 2rem 0;
 	align-items: baseline;
 	text-align: center;
+	font-weight: 400;
+	font-family: var(--link-family);
+	font-size: 2rem;
+	text-align: center;
+	color: #8b62fc;
 }
 
-.frame__counter span {
-	margin: 0 0.25rem;
+.intro__hint span {
+	margin: 0 0 0 0.75rem;
+	font-size: 2.25rem;
+	font-weight: 800;
+	color: white;
 }
 
-.frame__counter-text:nth-child(2) {
-	margin: 0 1.5rem 0 0;
+#countdown ul {
+	margin: 0;
 }
 
-.frame__counter-number {
-	font-size: 200%;
-	text-transform: none;
+#countdown li {
+	list-style: none;
+}
+
+.countdown-container {
+	display: flex;
+	flex-direction: row;
+}
+
+#content {
+	display: none;
 }
 
 .intro {
@@ -466,6 +482,10 @@ footer.frame {
 
 	main .frame__links:nth-child(2) {
 		display: none;
+	}
+
+	.countdown-container {
+		flex-direction: column;
 	}
 
 	.grid__item-img {
