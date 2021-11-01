@@ -26,7 +26,6 @@
 		<meta name="theme-color" content="#9aff5d" />
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this website in a modern browser that supports CSS Variables.");</script>
-		<script src="js/rankings.js"></script>
 	</head>
     <body style="--color-bg: rgba(88, 44, 216, 1)">
 		<main>
@@ -40,105 +39,14 @@
 					<a href="https://discord.gg/zqdrguPfUa"><i class="fab fa-discord"></a>
 				</div>
 			</div>
-            <div style="margin-top: 100px; text-transform: uppercase">
-                <div style="display: flex; align-items: center; justify-content: center">
-                    <div>
-                        <div style="display: flex; flex-direction: row; justify-content: center">
-                            <span style="font-size: 30px; width: 90px">
-                                Rank
-                            </span>
-                            <input
-                                type="text"
-                                style="margin-left: 10px; height: 45px; font-size: 30px; width: 110px; border-radius: 5px; border-width: 1px; border-color: white; border-style: solid; font-family: unset; text-align: center"
-                                class="rank-input"
-                                id="rank-input"
-                                minlength="1"
-                                maxlength="5"
-                                pattern="\d+"
-                            >
-                            </input>
-                        </div>
-                        <div style="display: flex; flex-direction: row; justify-content: center; margin-top: 20px">
-                            <span style="font-size: 30px; width: 90px">
-                                Slug #
-                            </span>
-                            <input
-                                type="text"
-                                style="margin-left: 10px; height: 45px; font-size: 30px; width: 110px; border-radius: 5px; border-width: 1px; border-color: white; border-style: solid; font-family: unset; text-align: center"
-                                class="rank-input"
-                                id="slug-input"
-                                minlength="1"
-                                maxlength="5"
-                                pattern="\d+"
-                            >
-                            </input>
-                        </div>
-                    </div>
-                    <img id="slug-image" src="" style="width: 512px; height: 512px; margin-left: 20px; margin-right: 20px; border-radius: 5px">
-                    <div style="display: flex; flex-direction: column">
-                        <div style="display: flex; flex-direction: row;">
-                            <div 
-                                id="background-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Background
-                            </div>
-                            <div
-                                id="slug-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Slug
-                            </div>
-                            <div
-                                id="chest-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Chest
-                            </div>
-                        </div>
-                        <div style="display: flex; flex-direction: row;">
-                            <div
-                                id="mouth-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Mouth
-                            </div>
-                            <div
-                                id="head-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Head
-                            </div>
-                            <div
-                                id="eyes-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Eyes
-                            </div>
-                        </div>
-                        <div style="display: flex; flex-direction: row;">
-                            <div
-                                id="tail-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Tail
-                            </div>
-                            <div
-                                id="back-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Back
-                            </div>
-                            <div
-                                id="hands-value"
-                                style="width: 250px; font-size: 20px; text-align: center; height: 80px; border-width: 1px; border-color: white; border-radius: 5px; border-style: solid; padding: 7px; display: flex; align-items: center; justify-content: center; margin: 5px"
-                            >
-                                Hands
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="react">
+                <div class="loading"/>
             </div>
 		</main>
 	</body>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="js/rankings.js"></script>
 </html>

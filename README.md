@@ -1,21 +1,14 @@
 # SolSlugs website
 
+## Setup
 
-1.
+* `npm install`
 
-```
-npm install
-```
+## Running in dev mode
 
-2.
+* `npx babel --watch src --out-dir js --presets react-app/prod`
+* `yarn start`
 
-```
-npm start
-```
+## Build for prod
 
-3.
-
-```
-npm run build
-```
-
+* `npm run build`
