@@ -8,7 +8,17 @@ let slugMap = new Map();
 let rankMap = new Map();
 let preBurnRankMap = new Map();
 
-export function Rankings() {
+export function Loading() {
+    return (
+        <div style={{ marginTop: '300px', textTransform: 'uppercase' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '72px' }}>
+                <FontAwesomeIcon icon={faSpinner} spin/>
+            </div>
+        </div>
+    );
+}
+
+export default function Rankings() {
     const [bgValue, setBgValue] = React.useState('');
     const [slugValue, setSlugValue] = React.useState('');
     const [chestValue, setChestValue] = React.useState('');
@@ -72,13 +82,7 @@ export function Rankings() {
     }, []);
 
     if (isLoading) {
-        return (
-            <div style={{ marginTop: '300px', textTransform: 'uppercase' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '72px' }}>
-                    <FontAwesomeIcon icon={faSpinner} spin/>
-                </div>
-            </div>
-        );
+        return <Loading/>;
     }
 
     return (

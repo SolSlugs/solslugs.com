@@ -8,9 +8,18 @@ export interface LoadedAttribute {
 }
 
 export const loadedBackgrounds: LoadedAttribute[] = [
+
+    {
+        name: 'Black',
+        image: require(`./img/assets/Background/Black.png`),
+    },
     {
         name: 'Blood Moon',
         image: require(`./img/assets/Background/Blood Moon.png`),
+    },
+    {
+        name: 'Blue',
+        image: require(`./img/assets/Background/Blue.png`),
     },
     {
         name: 'Disco',
@@ -19,6 +28,10 @@ export const loadedBackgrounds: LoadedAttribute[] = [
     {
         name: 'Escargo',
         image: require(`./img/assets/Background/Escargo.png`),
+    },
+    {
+        name: 'Green',
+        image: require(`./img/assets/Background/Green.png`),
     },
     {
         name: 'Hell',
@@ -41,8 +54,20 @@ export const loadedBackgrounds: LoadedAttribute[] = [
         image: require(`./img/assets/Background/Mushrooms.png`),
     },
     {
+        name: 'Pink',
+        image: require(`./img/assets/Background/Pink.png`),
+    },
+    {
+        name: 'Purple',
+        image: require(`./img/assets/Background/Purple.png`),
+    },
+    {
         name: 'Radioactive',
         image: require(`./img/assets/Background/Radioactive.png`),
+    },
+    {
+        name: 'Red',
+        image: require(`./img/assets/Background/Red.png`),
     },
     {
         name: 'Sea Slug',
@@ -67,6 +92,14 @@ export const loadedBackgrounds: LoadedAttribute[] = [
     {
         name: 'Space',
         image: require(`./img/assets/Background/Space.png`),
+    },
+    {
+        name: 'White',
+        image: require(`./img/assets/Background/White.png`),
+    },
+    {
+        name: 'Yellow',
+        image: require(`./img/assets/Background/Yellow.png`),
     },
     {
         name: 'Zombie',
