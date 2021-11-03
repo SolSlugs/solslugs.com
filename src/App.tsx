@@ -2,7 +2,7 @@ import React from 'react';
 import './css/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Home } from './Home';
 import { Rankings } from './Rankings';
 import { Attributes } from './Attributes';
