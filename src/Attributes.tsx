@@ -1,6 +1,11 @@
 import React from 'react';
+import { resetStyles } from './App';
 
 export function Attributes() {
+    React.useEffect(() => {
+        resetStyles();
+    }, []);
+
     return (
          <div style={{ marginTop: '100px', textTransform: 'uppercase' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>

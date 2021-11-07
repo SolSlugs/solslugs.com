@@ -5,6 +5,7 @@ import { Autocomplete } from '@material-ui/lab';
 import * as defaultImages from './Images';
 import { Attribute } from './Types';
 import { Slug } from './Slug';
+import { resetStyles } from './App';
 
 const CANVAS_SIZE = 512;
 
@@ -106,6 +107,7 @@ export function Designer() {
     const inputClasses = useInputStyles();
 
     React.useEffect(() => {
+        resetStyles();
         document.body.style.background = 'rgba(88, 44, 216, 1)';
     }, []);
 

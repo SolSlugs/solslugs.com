@@ -531,3 +531,18 @@ a:focus {
 		left: -10%;
 	}
 }
+
+@keyframes moveRainbow {
+    to {
+        background-position: 4500vh;
+    }
+}
+
+.rainbowText {
+    font-family: arial black;
+    font-size:70px;
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+    animation: moveRainbow 200s linear infinite;
+}

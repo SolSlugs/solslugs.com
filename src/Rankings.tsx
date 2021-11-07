@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { resetStyles } from './App';
 
 const ranks = require('./ranks.json');
 
@@ -39,6 +40,8 @@ export default function Rankings() {
     const [isLoading, setIsLoading] = React.useState(true);
 
     async function loadData() {
+        resetStyles();
+
         document.body.style.background = 'rgba(88, 44, 216, 1)';
 
         const burntData = await fetchBurntData();
@@ -340,7 +343,7 @@ function setItem(
     setRank(item.rank);
     setName(item.name);
 
-    setImage(require(`./img/all/${item.name.toString().padStart(5, '0')}.png`).default);
+    setImage(`/img/all/${item.name.toString().padStart(5, '0')}.png`);
 
     if (ranksGained <= 0) {
         setBurnInfo('');
@@ -365,7 +368,7 @@ function getItem(key: string, map: Map<number, any>) {
     return map.get(num);
 }
 
-async function fetchBurntData() {
+export async function fetchBurntData() {
     const url = 'https://letsalllovelain.com/burntslugs/';
 
     try {
@@ -421,7 +424,7 @@ function calculateRarity(
     };
 }
 
-function calculateRanks(items: any[], field: string) {
+export function calculateRanks(items: any[], field: string) {
     const statRarity = calculateStatRarity(items);
 
     const rankedItems = [];
@@ -455,7 +458,7 @@ function calculateRanks(items: any[], field: string) {
     return rankMap;
 }
 
-function createBurntMap(burntData: any) {
+export function createBurntMap(burntData: any) {
     const map = new Map();
 
     for (const token of burntData.tokenInfo) {

@@ -1,7 +1,9 @@
 import React from 'react';
+import { resetStyles } from './App';
 
 export function Home() {
     React.useEffect(() => {
+        resetStyles();
 	    document.body.style.background = 'linear-gradient(132deg, rgba(88,44,216,1) 0%, rgba(0, 0, 0, 1) 100%)';
     }, []);
 

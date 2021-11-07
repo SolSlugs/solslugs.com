@@ -7,8 +7,15 @@ import { Home } from './Home';
 import { Attributes } from './Attributes';
 import { Designer } from './Designer';
 import { Loading } from './Rankings';
+import { Graveyard } from './Graveyard';
 
 const Ranks = lazy(() => import('./Rankings'));
+
+export function resetStyles() {
+    document.body.style.background = '';
+    document.body.style.fontFamily = ''; 
+    document.body.style.cursor = '';
+}
 
 function App() {
     return (
@@ -22,6 +29,7 @@ function App() {
                                 <Link to='/rankings'>Rankings</Link>
                                 <Link to='/attributes'>Attributes</Link>
                                 <Link to='/designer'>Designer</Link>
+                                <Link to='/graveyard'>Graveyard</Link>
                             </nav>
                             <div className="frame__fill">
                             </div>
@@ -44,6 +52,9 @@ function App() {
                             </Route>
                             <Route path='/designer'>
                                 <Designer/>
+                            </Route>
+                            <Route path='/graveyard'>
+                                <Graveyard/>
                             </Route>
                         </Switch>
                     </div>
