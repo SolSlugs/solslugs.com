@@ -6,13 +6,13 @@ import { Loading } from './Rankings';
 
 const ranks = require('./ranks.json');
 
-interface BurntSlug {
+interface IBurntSlug {
     name: number;
     rank: number;
     mint: string;
 }
 
-function BurntSlug(props: { slug: BurntSlug }) {
+function BurntSlug(props: { slug: IBurntSlug }) {
     const { slug } = props;
 
     return (
@@ -65,7 +65,7 @@ export function Graveyard() {
         loadData();
     }, []);
 
-    const [burntSlugs, setBurntSlugs] = React.useState<BurntSlug[]>([]);
+    const [burntSlugs, setBurntSlugs] = React.useState<IBurntSlug[]>([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     async function loadData() {
