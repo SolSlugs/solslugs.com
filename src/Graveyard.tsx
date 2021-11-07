@@ -44,6 +44,10 @@ function BurntSlug(props: { slug: IBurntSlug }) {
 }
 
 export function Graveyard() {
+    const [burntSlugs, setBurntSlugs] = React.useState<IBurntSlug[]>([]);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [isPlaying, setIsPlaying] = React.useState(false);
+
     React.useEffect(() => {
         resetStyles();
         document.body.style.background = '#000000';
@@ -52,22 +56,57 @@ export function Graveyard() {
         document.body.style.fontFamily = 'TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif';
         document.body.style.cursor = `url('/img/cursor.cur'), auto`;
 
-        const audio = document.getElementById('audio');
+        document.addEventListener('click', playOnce, { once: true });
 
-        if (audio) {
-            (audio as HTMLAudioElement).volume = 0.5;
-        }
-
-        document.addEventListener('click', function() {
-            (document.getElementById('audio') as HTMLAudioElement).play()
-        }, { once: true });
+        document.addEventListener('scroll', playOnce, { once: true });
 
         loadData();
     }, []);
 
-    const [burntSlugs, setBurntSlugs] = React.useState<IBurntSlug[]>([]);
-    const [isLoading, setIsLoading] = React.useState(true);
+    function playOnce() {
+        play();
 
+        document.removeEventListener('click', playOnce);
+        document.removeEventListener('scroll', playOnce);
+    }
+
+    function play() {
+        if (isPlaying) {
+            return;
+        }
+
+        const audio = document.getElementById('audio');
+
+        if (!audio) {
+            return;
+        }
+
+        const a = audio as HTMLAudioElement;
+
+        a.volume = 0.5;
+        a.play();
+
+        setIsPlaying(true);
+    }
+
+    function stop() {
+        if (!isPlaying) {
+            return;
+        }
+
+        const audio = document.getElementById('audio');
+
+        if (!audio) {
+            return;
+        }
+
+        const a = audio as HTMLAudioElement;
+
+        a.pause();
+
+        setIsPlaying(false);
+    }
+    
     async function loadData() {
         const data = await fetchBurntData();
 
@@ -141,12 +180,23 @@ export function Graveyard() {
             >
                 {`${burntSlugs.length} slugs have been burnt`}
             </span>
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
+            <button
+                onClick={isPlaying ? stop : play}
+                style={{
+                    fontSize: '20px',
+                    backgroundColor: 'green',
+                }}
+            >
+                {isPlaying ? 'Stop Music' : 'Play Music'}
+            </button>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
                 {burntSlugs.map((s, i) => (
                     <BurntSlug
                         slug={s}
