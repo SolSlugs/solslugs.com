@@ -61,6 +61,7 @@ export function Graveyard() {
         document.addEventListener('scroll', playOnce, { once: true });
 
         loadData();
+    /* eslint-disable react-hooks/exhaustive-deps */
     }, []);
 
     function playOnce() {
