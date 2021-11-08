@@ -252,7 +252,7 @@ export function Attributes() {
                                 {attributes[0].layer}
                             </span>
                             <div className='row'>
-                                {attributes.sort((a, b) => b.count - a.count).map((item: any, j: number) => (
+                                {attributes.sort((a: any, b: any) => b.count - a.count).map((item: any, j: number) => (
                                     <RenderedAttribute
                                         key={`${item.name}-${item.layer}`}
                                         item={item}
