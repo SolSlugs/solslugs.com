@@ -8,7 +8,6 @@ export interface LoadedAttribute {
 }
 
 export const loadedBackgrounds: LoadedAttribute[] = [
-
     {
         name: 'Black',
         image: require(`./img/assets/Background/Black.png`),
@@ -125,7 +124,7 @@ export const loadedColor: LoadedAttribute[] = [
         image: require(`./img/assets/Slug/CyanSlug.png`),
     },
     {
-        name: 'Demon',
+        name: 'Demon Slug',
         image: require(`./img/assets/Slug/DemonSlug.png`),
     },
     {
@@ -256,7 +255,7 @@ export const loadedChest: LoadedAttribute[] = [
 export const loadedMouth: LoadedAttribute[] = [
 
     {
-        name: '5 oclock shadow',
+        name: '5 O\'Clock Shadow',
         image: require(`./img/assets/Mouth/5 oclock shadow.png`),
     },
     {
@@ -272,7 +271,7 @@ export const loadedMouth: LoadedAttribute[] = [
         image: require(`./img/assets/Mouth/Big Cheesin.png`),
     },
     {
-        name: 'Capy Mouth',
+        name: 'Capy',
         image: require(`./img/assets/Mouth/Capy Mouth.png`),
     },
     {
@@ -292,7 +291,7 @@ export const loadedMouth: LoadedAttribute[] = [
         image: require(`./img/assets/Mouth/Cute.png`),
     },
     {
-        name: 'Default Mouth',
+        name: 'Default',
         image: require(`./img/assets/Mouth/Default Mouth.png`),
     },
     {
@@ -352,7 +351,7 @@ export const loadedMouth: LoadedAttribute[] = [
         image: require(`./img/assets/Mouth/SSLs.png`),
     },
     {
-        name: 'That\'s methed up',
+        name: 'That\'s Methed Up',
         image: require(`./img/assets/Mouth/That's methed up.png`),
     },
     {
@@ -375,7 +374,7 @@ export const loadedBack: LoadedAttribute[] = [
         image: require(`./img/assets/Back/Backpack.png`),
     },
     {
-        name: 'Capy Fur',
+        name: 'Capy',
         image: require(`./img/assets/Back/Capy Fur.png`),
     },
     {
@@ -446,7 +445,7 @@ export const loadedHead: LoadedAttribute[] = [
         image: require(`./img/assets/Head/Brain Slug.png`),
     },
     {
-        name: 'Capy Head',
+        name: 'Capy',
         image: require(`./img/assets/Head/Capy Head.png`),
     },
     {
@@ -525,7 +524,7 @@ export const loadedHead: LoadedAttribute[] = [
 
 export const loadedEyes: LoadedAttribute[] = [
     {
-        name: 'Capy Eyes',
+        name: 'Capy',
         image: require(`./img/assets/Eyes/Capy Eyes.png`),
     },
     {
@@ -537,7 +536,7 @@ export const loadedEyes: LoadedAttribute[] = [
         image: require(`./img/assets/Eyes/Cyclops.png`),
     },
     {
-        name: 'Default Eyes',
+        name: 'Default',
         image: require(`./img/assets/Eyes/Default Eyes.png`),
     },
     {
@@ -668,7 +667,7 @@ export const loadedTail: LoadedAttribute[] = [
         image: require(`./img/assets/Tail/Tank.png`),
     },
     {
-        name: 'TrackPants',
+        name: 'Trackpants',
         image: require(`./img/assets/Tail/TrackPants.png`),
     },
     {
@@ -691,7 +690,7 @@ export const loadedHands: LoadedAttribute[] = [
         image: require(`./img/assets/Hands/Banjo.png`),
     },
     {
-        name: 'Capy Hands',
+        name: 'Capy',
         image: require(`./img/assets/Hands/Capy Hands.png`),
     },
     {

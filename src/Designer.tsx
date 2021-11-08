@@ -179,186 +179,190 @@ export function Designer() {
 
     return (
         <>
-                <div style={{
-                    marginTop: '100px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'start',
-                    justifyContent: 'center',
-                    padding: '1rem',
-                }}>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: '30px',
+            <div style={{
+                marginTop: '100px',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'start',
+                justifyContent: 'center',
+                padding: '1rem',
+                flexWrap: 'wrap',
+            }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: '30px',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <AttributePicker
+                        setFunc={setBackground}
+                        value={backgroundVal}
+                        options={backgroundOptions}
+                        label='Background'
+                    />
+                    <AttributePicker
+                        setFunc={setColor}
+                        value={colorVal}
+                        options={colorOptions}
+                        label='Slug'
+                        styles={{
+                            marginTop: '20px',
                         }}
-                    >
-                        <AttributePicker
-                            setFunc={setBackground}
-                            value={backgroundVal}
-                            options={backgroundOptions}
-                            label='Background'
-                        />
-                        <AttributePicker
-                            setFunc={setColor}
-                            value={colorVal}
-                            options={colorOptions}
-                            label='Slug'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <AttributePicker
-                            setFunc={setChest}
-                            value={chestVal}
-                            options={chestOptions}
-                            label='Chest'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <AttributePicker
-                            setFunc={setMouth}
-                            value={mouthVal}
-                            options={mouthOptions}
-                            label='Mouth'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <AttributePicker
-                            setFunc={setBack}
-                            value={backVal}
-                            options={backOptions}
-                            label='Back'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                    </div>
-                    <div
+                    />
+                    <AttributePicker
+                        setFunc={setChest}
+                        value={chestVal}
+                        options={chestOptions}
+                        label='Chest'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                    <AttributePicker
+                        setFunc={setMouth}
+                        value={mouthVal}
+                        options={mouthOptions}
+                        label='Mouth'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                    <AttributePicker
+                        setFunc={setBack}
+                        value={backVal}
+                        options={backOptions}
+                        label='Back'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: `${canvasValue.value}px`,
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <canvas
+                        id={'canvas'}
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
                             width: `${canvasValue.value}px`,
+                            height: `${canvasValue.value}px`,
                         }}
                     >
-                        <canvas
-                            id={'canvas'}
+                    </canvas>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginTop: '15px',
+                        }}
+                    >
+                        <Button
+                            variant="contained"
+                            classes={buttonClasses}
+                            onClick={handleRandomButton}
+                            size="small"
                             style={{
                                 width: `${canvasValue.value}px`,
-                                height: `${canvasValue.value}px`,
+                                fontSize: '20px',
                             }}
                         >
-                        </canvas>
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginTop: '15px',
-                            }}
-                        >
-                            <Button
-                                variant="contained"
-                                classes={buttonClasses}
-                                onClick={handleRandomButton}
-                                size="small"
-                                style={{
-                                    width: `${canvasValue.value}px`,
-                                    fontSize: '20px',
-                                }}
-                            >
-                                Random
-                            </Button>
-                        </div>
-                    </div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginLeft: '30px',
-                        }}
-                    >
-                        <AttributePicker
-                            setFunc={setHead}
-                            value={headVal}
-                            options={headOptions}
-                            label='Head'
-                        />
-                        <AttributePicker
-                            setFunc={setEyes}
-                            value={eyesVal}
-                            options={eyesOptions}
-                            label='Eyes'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <AttributePicker
-                            setFunc={setTail}
-                            value={tailVal}
-                            options={tailOptions}
-                            label='Tail'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <AttributePicker
-                            setFunc={setHands}
-                            value={handVal}
-                            options={handOptions}
-                            label='Hands'
-                            styles={{
-                                marginTop: '20px',
-                            }}
-                        />
-                        <Autocomplete
-                            onChange={(e, v) => v && setCanvasValue(v)}
-                            value={canvasValue}
-                            options={[
-                                {
-                                    name: '128x128',
-                                    value: 128,
-                                },
-                                {
-                                    name: '256x256',
-                                    value: 256,
-                                },
-                                {
-                                    name: '512x512',
-                                    value: 512,
-                                },
-                                {
-                                    name: '1024x1024',
-                                    value: 1024,
-                                },
-                            ]}
-                            getOptionLabel={(option) => option.name}
-                            getOptionSelected={(option, value) => option.value === canvasValue.value}
-                            renderInput={(params) => (
-                                <TextField
-                                    {...params}
-                                    label='Canvas Size'
-                                    variant="outlined"
-                                    InputLabelProps={{ classes: inputClasses }}
-                                />
-                            )}
-                            style={{
-                                width: '200px',
-                                marginTop: '20px',
-                            }}
-                            classes={inputClasses}
-                        />
+                            Random
+                        </Button>
                     </div>
                 </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: '30px',
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <AttributePicker
+                        setFunc={setHead}
+                        value={headVal}
+                        options={headOptions}
+                        label='Head'
+                    />
+                    <AttributePicker
+                        setFunc={setEyes}
+                        value={eyesVal}
+                        options={eyesOptions}
+                        label='Eyes'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                    <AttributePicker
+                        setFunc={setTail}
+                        value={tailVal}
+                        options={tailOptions}
+                        label='Tail'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                    <AttributePicker
+                        setFunc={setHands}
+                        value={handVal}
+                        options={handOptions}
+                        label='Hands'
+                        styles={{
+                            marginTop: '20px',
+                        }}
+                    />
+                    <Autocomplete
+                        onChange={(e, v) => v && setCanvasValue(v)}
+                        value={canvasValue}
+                        options={[
+                            {
+                                name: '128x128',
+                                value: 128,
+                            },
+                            {
+                                name: '256x256',
+                                value: 256,
+                            },
+                            {
+                                name: '512x512',
+                                value: 512,
+                            },
+                            {
+                                name: '1024x1024',
+                                value: 1024,
+                            },
+                        ]}
+                        getOptionLabel={(option) => option.name}
+                        getOptionSelected={(option, value) => option.value === canvasValue.value}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label='Canvas Size'
+                                variant="outlined"
+                                InputLabelProps={{ classes: inputClasses }}
+                            />
+                        )}
+                        style={{
+                            width: '200px',
+                            marginTop: '20px',
+                        }}
+                        classes={inputClasses}
+                    />
+                </div>
+            </div>
         </>
     );
 }

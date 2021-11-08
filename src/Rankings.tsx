@@ -90,12 +90,12 @@ export default function Rankings() {
 
     return (
         <div style={{ marginTop: '100px', textTransform: 'uppercase' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}>
                     <Input
                         name={'Rank'}
@@ -159,18 +159,18 @@ export default function Rankings() {
                         borderRadius: '5px',
                     }}
                 />
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <AttributeValue name='Background' attribute={bgValue}/>
                         <AttributeValue name='Slug' attribute={slugValue}/>
                         <AttributeValue name='Chest' attribute={chestValue}/>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <AttributeValue name='Mouth' attribute={mouthValue}/>
                         <AttributeValue name='Head' attribute={headValue}/>
                         <AttributeValue name='Eyes' attribute={eyesValue}/>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <AttributeValue name='Tail' attribute={tailValue}/>
                         <AttributeValue name='Back' attribute={backValue}/>
                         <AttributeValue name='Hands' attribute={handsValue}/>
@@ -381,7 +381,7 @@ export async function fetchBurntData() {
     }
 }
 
-function calculateStatRarity(items: any[]) {
+export function calculateStatRarity(items: any[]) {
     const rarityMap = new Map();
 
     for (const item of items) {

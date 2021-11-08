@@ -24,7 +24,7 @@ function App() {
                 <main>
                     <div id="content" style={{ minHeight: '800px' }}>
                         <div className="frame frame--screen">
-                            <nav className="frame__links frame__links--header">
+                            <nav className="frame__links frame__links--header" style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 <Link to='/'>Home</Link>
                                 <Link to='/rankings'>Rankings</Link>
                                 <Link to='/attributes'>Attributes</Link>
