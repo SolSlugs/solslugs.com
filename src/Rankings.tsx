@@ -399,7 +399,7 @@ export function calculateStatRarity(items: any[]) {
     return rarityMap;
 }
 
-function calculateRarity(
+export function calculateRarity(
     rarityMap: Map<string, any>,
     item: any,
     nftCount: number) {

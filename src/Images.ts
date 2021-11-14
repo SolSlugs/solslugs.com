@@ -195,10 +195,6 @@ export const loadedChest: LoadedAttribute[] = [
         image: require(`./img/assets/Chest/Abs.png`),
     },
     {
-        name: 'Astronaut',
-        image: require(`./img/assets/Chest/Astronaut.png`),
-    },
-    {
         name: 'Demon Skeleton',
         image: require(`./img/assets/Chest/Demon Skeleton.png`),
     },
@@ -215,7 +211,7 @@ export const loadedChest: LoadedAttribute[] = [
         image: require(`./img/assets/Chest/Monstrosity.png`),
     },
     {
-        name: 'No Chest',
+        name: 'None',
         image: require(`./img/assets/Chest/No Chest.png`),
     },
     {
@@ -257,10 +253,6 @@ export const loadedMouth: LoadedAttribute[] = [
     {
         name: '5 O\'Clock Shadow',
         image: require(`./img/assets/Mouth/5 oclock shadow.png`),
-    },
-    {
-        name: 'Astronaut',
-        image: require(`./img/assets/Mouth/Astronaut.png`),
     },
     {
         name: 'Beard',
@@ -339,10 +331,6 @@ export const loadedMouth: LoadedAttribute[] = [
         image: require(`./img/assets/Mouth/Rage Mouth.png`),
     },
     {
-        name: 'Smug',
-        image: require(`./img/assets/Mouth/Smug.png`),
-    },
-    {
         name: 'Solana',
         image: require(`./img/assets/Mouth/Solana.png`),
     },
@@ -390,7 +378,7 @@ export const loadedBack: LoadedAttribute[] = [
         image: require(`./img/assets/Back/Hawaiian Shirt.png`),
     },
     {
-        name: 'No Back',
+        name: 'None',
         image: require(`./img/assets/Back/No Back.png`),
     },
     {
@@ -485,7 +473,7 @@ export const loadedHead: LoadedAttribute[] = [
         image: require(`./img/assets/Head/Medusa.png`),
     },
     {
-        name: 'No Head',
+        name: 'None',
         image: require(`./img/assets/Head/No Head.png`),
     },
     {
@@ -639,7 +627,7 @@ export const loadedTail: LoadedAttribute[] = [
         image: require(`./img/assets/Tail/Mermaid Tail.png`),
     },
     {
-        name: 'No Tail',
+        name: 'None',
         image: require(`./img/assets/Tail/No Tail.png`),
     },
     {
@@ -726,7 +714,7 @@ export const loadedHands: LoadedAttribute[] = [
         image: require(`./img/assets/Hands/Minigun.png`),
     },
     {
-        name: 'No Hands',
+        name: 'None',
         image: require(`./img/assets/Hands/No Hands.png`),
     },
     {

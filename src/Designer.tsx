@@ -6,6 +6,7 @@ import * as defaultImages from './Images';
 import { Attribute } from './Types';
 import { Slug } from './Slug';
 import { resetStyles } from './App';
+import { Loading, calculateStatRarity, calculateRarity } from './Rankings';
 
 const CANVAS_SIZE = 512;
 
@@ -102,22 +103,92 @@ export function Designer() {
     const [tailVal, setTail] = React.useState<Attribute>(pickRandomAttribute(availableTail));
     const [handVal, setHands] = React.useState<Attribute>(pickRandomAttribute(availableHands));
     const [canvasValue, setCanvasValue] = React.useState({ name: `${CANVAS_SIZE}x${CANVAS_SIZE}`, value: CANVAS_SIZE });
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [statRarity, setStatRarity] = React.useState(new Map());
+    const [rarities, setRarities] = React.useState<number[]>([]);
+    const [hypotheticalRank, setHypotheticalRank] = React.useState('');
 
     const buttonClasses = useButtonStyles();
     const inputClasses = useInputStyles();
 
-    React.useEffect(() => {
-        resetStyles();
-        document.body.style.background = 'rgba(88, 44, 216, 1)';
-    }, []);
+    async function loadData() {
+        const url = 'https://letsalllovelain.com/burntslugs/';
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            let nonBurnt = [];
+
+            for (let item of data.tokenInfo) {
+                if (!item.burnt) {
+                    nonBurnt.push(item);
+                }
+            }
+
+            const rarityMap = calculateStatRarity(nonBurnt);
+
+            setStatRarity(rarityMap);
+
+            const rarities = [];
+
+            for (let item of nonBurnt) {
+                if (!item.attributes) {
+                    console.log(item);
+                }
+
+                const { rarity } = calculateRarity(
+                    rarityMap,
+                    item,
+                    nonBurnt.length,
+                );
+
+                rarities.push(rarity);
+            }
+
+            const sortedItems = rarities.sort((a, b) => b - a);
+
+            setRarities(sortedItems);
+        } catch (err) {
+            console.log(`Failed to fetch burn data: ${(err as any).toString()}!`);
+            return;
+        }
+
+        setIsLoading(false);
+    }
 
     React.useEffect(() => {
+        if (isLoading) {
+            return;
+        }
+
         const canvasObj = new fabric.StaticCanvas('canvas', {
             width: canvasValue.value,
             height: canvasValue.value,
         });
 
         setCanvas(canvasObj);
+    /* eslint-disable react-hooks/exhaustive-deps */
+    }, [isLoading]);
+
+    React.useEffect(() => {
+        resetStyles();
+        document.body.style.background = 'rgba(88, 44, 216, 1)';
+        loadData();
+    }, []);
+
+    React.useEffect(() => {
+        if (isLoading) {
+            return;
+        }
+
+        const canvasObj = new fabric.StaticCanvas('canvas', {
+            width: canvasValue.value,
+            height: canvasValue.value,
+        });
+
+        setCanvas(canvasObj);
+    /* eslint-disable react-hooks/exhaustive-deps */
     }, [canvasValue.value]);
 
     React.useEffect(() => {
@@ -137,6 +208,8 @@ export function Designer() {
             slug.setCanvas(canvas);
 
             slug.draw(canvasValue.value);
+
+            calculateHypotheticalRank();
         }
     }, [
         canvas,
@@ -151,6 +224,91 @@ export function Designer() {
         handVal,
         canvasValue,
     ]);
+
+    function calculateHypotheticalRank() {
+        const attributes = [
+            {
+                trait_type: 'Background',
+                value: backgroundVal.name,
+            },
+            {
+                trait_type: 'Slug',
+                value: colorVal.name,
+            },
+            {
+                trait_type: 'Chest',
+                value: chestVal.name,
+            },
+            {
+                trait_type: 'Mouth',
+                value: mouthVal.name,
+            },
+            {
+                trait_type: 'Back',
+                value: backVal.name,
+            },
+            {
+                trait_type: 'Head',
+                value: headVal.name,
+            },
+            {
+                trait_type: 'Eyes',
+                value: eyesVal.name,
+            },
+            {
+                trait_type: 'Tail',
+                value: tailVal.name,
+            },
+            {
+                trait_type: 'Hands',
+                value: handVal.name,
+            },
+        ];
+
+        const rarity = calculateHypotheticalRarity(
+            statRarity,
+            attributes,
+            rarities.length + 1,
+        );
+
+        let rank = 1;
+
+        for (const existingRarity of rarities) {
+            if (rarity < existingRarity) {
+                rank++;
+            } else {
+                break;
+            }
+        }
+
+        setHypotheticalRank(rank.toString());
+    }
+
+    function calculateHypotheticalRarity(
+        rarityMap: Map<string, any>,
+        attributes: any[],
+        nftCount: number) {
+
+        let totalRarityScore = 0;
+
+        for (const layer of attributes) {
+            let attributeCount = rarityMap.get(`${layer.trait_type}-${layer.value}`);
+
+            if (!attributeCount) {
+                if (layer.trait_type !== 'Background') {
+                    console.log(layer.trait_type, layer.value, attributeCount);
+                } else {
+                    attributeCount = 1;
+                }
+            }
+
+            const rarityScore = 1 / (attributeCount / nftCount);
+
+            totalRarityScore += rarityScore;
+        }
+
+        return totalRarityScore;
+    }
 
     function handleRandomButton() {
         if (!canvas) {
@@ -175,6 +333,10 @@ export function Designer() {
         setHead(pickRandomAttribute(availableHead));
         setEyes(pickRandomAttribute(availableEyes));
         setHands(pickRandomAttribute(availableHands));
+    }
+
+    if (isLoading) {
+        return <Loading/>;
     }
 
     return (
@@ -265,6 +427,7 @@ export function Designer() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             marginTop: '15px',
+                            flexDirection: 'column',
                         }}
                     >
                         <Button
@@ -279,6 +442,12 @@ export function Designer() {
                         >
                             Random
                         </Button>
+                        {hypotheticalRank !== '' && <span style={{
+                            marginTop: '10px',
+                            fontSize: '30px',
+                        }}>
+                            {`Hypothetical Rank: #${hypotheticalRank}`}
+                        </span>}
                     </div>
                 </div>
                 <div
