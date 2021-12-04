@@ -1,7 +1,6 @@
 import React from 'react';
 import { resetStyles } from './App';
 import { Loading } from './Rankings';
-import { fabric } from 'fabric';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Table from '@material-ui/core/Table';
@@ -50,8 +49,6 @@ async function fetchGen2Burns() {
 
 export function Generation2Users() {
     const [isLoading, setIsLoading] = React.useState(true);
-    const [layers, setLayers] = React.useState<any[]>([]);
-
     const [lastUpdated, setLastUpdated] = React.useState<null | string>(null);
     const [totalGen2, setTotalGen2] = React.useState<null | number>(null);
     const [owners, setOwners] = React.useState<any[]>([]);
@@ -64,9 +61,6 @@ export function Generation2Users() {
             const {
                 lastUpdated,
                 totalGen2,
-                userBurns,
-                devBurns,
-                totalBurns,
                 owners,
             } = burnData;
 
