@@ -8,6 +8,7 @@ import { Attributes } from './Attributes';
 import { Designer } from './Designer';
 import { Loading } from './Rankings';
 import { Graveyard } from './Graveyard';
+import { Generation2Users } from './Generation2Users';
 
 const Ranks = lazy(() => import('./Rankings'));
 
@@ -30,6 +31,7 @@ function App() {
                                 <Link to='/attributes'>Attributes</Link>
                                 <Link to='/designer'>Designer</Link>
                                 <Link to='/graveyard'>Graveyard</Link>
+                                <Link to='/gen2'>Gen 2 Burns</Link>
                             </nav>
                             <div className="frame__fill">
                             </div>
@@ -55,6 +57,9 @@ function App() {
                             </Route>
                             <Route path='/graveyard'>
                                 <Graveyard/>
+                            </Route>
+                            <Route path='/gen2'>
+                                <Generation2Users/>
                             </Route>
                         </Switch>
                     </div>
