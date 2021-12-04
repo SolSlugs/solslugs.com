@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.43639279.chunk.css",
-    "main.js": "/static/js/main.a0a1b165.chunk.js",
-    "main.js.map": "/static/js/main.a0a1b165.chunk.js.map",
+    "main.js": "/static/js/main.79e2ea7f.chunk.js",
+    "main.js.map": "/static/js/main.79e2ea7f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1ab5d97b.js",
     "runtime-main.js.map": "/static/js/runtime-main.1ab5d97b.js.map",
-    "static/js/2.56919d13.chunk.js": "/static/js/2.56919d13.chunk.js",
-    "static/js/2.56919d13.chunk.js.map": "/static/js/2.56919d13.chunk.js.map",
+    "static/js/2.bde2c702.chunk.js": "/static/js/2.bde2c702.chunk.js",
+    "static/js/2.bde2c702.chunk.js.map": "/static/js/2.bde2c702.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.43639279.chunk.css.map": "/static/css/main.43639279.chunk.css.map",
-    "static/js/2.56919d13.chunk.js.LICENSE.txt": "/static/js/2.56919d13.chunk.js.LICENSE.txt",
+    "static/js/2.bde2c702.chunk.js.LICENSE.txt": "/static/js/2.bde2c702.chunk.js.LICENSE.txt",
     "static/media/Blood Moon.png": "/static/media/Blood Moon.88cf02df.png",
     "static/media/Disco.png": "/static/media/Disco.ac4a87b4.png",
     "static/media/Hell.png": "/static/media/Hell.27565113.png",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1ab5d97b.js",
-    "static/js/2.56919d13.chunk.js",
+    "static/js/2.bde2c702.chunk.js",
     "static/css/main.43639279.chunk.css",
-    "static/js/main.a0a1b165.chunk.js"
+    "static/js/main.79e2ea7f.chunk.js"
   ]
 }
