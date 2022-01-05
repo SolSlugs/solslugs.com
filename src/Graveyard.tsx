@@ -8,6 +8,7 @@ interface IBurntSlug {
     name: number;
     rank: number;
     mint: string;
+    image: string;
 }
 
 function BurntSlug(props: { slug: IBurntSlug }) {
