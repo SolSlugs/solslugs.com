@@ -4,8 +4,6 @@ import { fetchBurntData, createBurntMap, calculateRanks } from './Rankings';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Loading } from './Rankings';
 
-const ranks = require('./ranks.json');
-
 interface IBurntSlug {
     name: number;
     rank: number;
@@ -30,7 +28,7 @@ function BurntSlug(props: { slug: IBurntSlug }) {
                 {`Formerly rank ${slug.rank}`}
             </span>
             <LazyLoadImage
-                src={`/img/all/${slug.name.toString().padStart(5, '0')}.png`}
+                src={slug.image}
                 alt={`Burnt Slug ${slug.name}`}
                 style={{
                     width: '256px',
@@ -116,19 +114,22 @@ export function Graveyard() {
         }
 
         const burntMap = createBurntMap(data);
-        const preBurnRankMap = calculateRanks(ranks, 'name');
+        const preBurnRankMap = calculateRanks(data.tokenInfo, 'name');
 
         const burnt = [];
 
-        for (const rank of ranks) {
+        for (const rank of data.tokenInfo) {
             if (burntMap.get(rank.mint)) {
                 burnt.push({
                     name: rank.name,
                     rank: preBurnRankMap.get(rank.name).rank,
                     mint: rank.mint,
+                    image: rank.image,
                 });
             }
         }
+
+        burnt.sort((a, b) => a.rank - b.rank);
 
         setBurntSlugs(burnt);
         setIsLoading(false);

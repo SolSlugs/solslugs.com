@@ -88,7 +88,7 @@ export const loadedBack: LoadedAttribute[] = [
 
 export const loadedBackgrounds: LoadedAttribute[] = [
     {
-        name: 'Arena.png',
+        name: 'Arena',
         image: require(`./img/assets/Background/Arena.png`),
     },
     {
@@ -179,7 +179,7 @@ export const loadedBackgrounds: LoadedAttribute[] = [
 
 export const loadedChest: LoadedAttribute[] = [
     {
-        name: 'Abs.png',
+        name: 'Abs',
         image: require(`./img/assets/Chest/Abs.png`),
     },
     {

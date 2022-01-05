@@ -1,10 +1,8 @@
 import React from 'react';
 import { resetStyles } from './App';
-import { Loading, fetchBurntData, createBurntMap, calculateStatRarity } from './Rankings';
+import { Loading, createBurntMap, calculateStatRarity } from './Rankings';
 import { fabric } from 'fabric';
 import * as defaultImages from './Images';
-
-const ranks = require('./ranks.json');
 
 const layerMapping = new Map([
     ['Background', { items: defaultImages.backgrounds, zIndex: 0 }],
@@ -104,6 +102,8 @@ function RenderedAttribute(props: any) {
             top: percentageTop,
         });
 
+        console.log(item.layer);
+
         const { items, zIndex } = layerMapping.get(item.layer)!;
         
         const images: { image: string, zIndex: number }[] = [];
@@ -192,6 +192,26 @@ async function loadImage(base64: string): Promise<fabric.Image> {
     });
 }
 
+async function fetchBurntData() {
+    const url = 'https://letsalllovelain.com/burntslugs/';
+
+    try {
+        const data = await fetch(url);
+
+        const raw = await data.json();
+
+        for (let item of raw.tokenInfo) {
+            item.name = Number(item.name.split(' - ')[1]);
+        }
+
+        return raw;
+    } catch (err) {
+        console.log(`Failed to fetch burn data: ${(err as any).toString()}!`);
+        return undefined;
+    }
+}
+
+
 export function Attributes() {
     const [isLoading, setIsLoading] = React.useState(true);
     const [layers, setLayers] = React.useState<any[]>([]);
@@ -202,7 +222,7 @@ export function Attributes() {
 
         let nonBurnt = [];
 
-        for (let item of ranks) {
+        for (let item of burntData.tokenInfo) {
             if (!burntMap.get(item.mint)) {
                 nonBurnt.push(item);
             }
