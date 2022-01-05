@@ -204,7 +204,7 @@ export const loadedChest: LoadedAttribute[] = [
     },
     {
         name: 'Engagement Ring of the Wife\'s Boyfriend',
-        image: require(`./img/assets/Chest/Engagement Ring of the Wife\'s Boyfriend.png`),
+        image: require(`./img/assets/Chest/Engagement Ring of the Wife's Boyfriend.png`),
     },
     {
         name: 'Golden Breastplate',
@@ -788,7 +788,7 @@ export const loadedMouth: LoadedAttribute[] = [
     },
     {
         name: 'That\'s Methed Up',
-        image: require(`./img/assets/Mouth/That\'s methed up.png`),
+        image: require(`./img/assets/Mouth/That's methed up.png`),
     },
     {
         name: 'Toothy',
@@ -987,7 +987,7 @@ export const loadedTail: LoadedAttribute[] = [
 ];
 
 export const backgrounds: Attribute[] = loadedBackgrounds.map((l) => ({ name: l.name, image: l.image.default }));
-export const color: Attribute[] = loadedColor.map((l) => ({ name: l.name, image: l.image.default }));
+export const color: Attribute[] = loadedSlug.map((l) => ({ name: l.name, image: l.image.default }));
 export const chest: Attribute[] = loadedChest.map((l) => ({ name: l.name, image: l.image.default }));
 export const mouth: Attribute[] = loadedMouth.map((l) => ({ name: l.name, image: l.image.default }));
 export const back: Attribute[] = loadedBack.map((l) => ({ name: l.name, image: l.image.default }));

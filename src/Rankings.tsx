@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { resetStyles } from './App';
 
-const ranks = require('./ranks.json');
-
 let slugMap = new Map();
 let rankMap = new Map();
 let preBurnRankMap = new Map();
@@ -29,6 +27,8 @@ export default function Rankings() {
     const [tailValue, setTailValue] = React.useState('');
     const [backValue, setBackValue] = React.useState('');
     const [handsValue, setHandsValue] = React.useState('');
+    const [attributeCountValue, setAttributeCountValue] = React.useState('');
+    const [generationValue, setGenerationValue] = React.useState('');
 
     const [rankValue, setRankValue] = React.useState('');
     const [numValue, setNumValue] = React.useState('');
@@ -49,13 +49,13 @@ export default function Rankings() {
 
         let nonBurnt = [];
 
-        for (let item of ranks) {
+        for (const item of burntData.tokenInfo) {
             if (!burntMap.get(item.mint)) {
                 nonBurnt.push(item);
             }
         }
 
-        preBurnRankMap = calculateRanks(ranks, 'name');
+        preBurnRankMap = calculateRanks(burntData.tokenInfo, 'name');
         rankMap = calculateRanks(nonBurnt, 'rank');
         slugMap = calculateRanks(nonBurnt, 'name');
 
@@ -73,6 +73,8 @@ export default function Rankings() {
             setTailValue,
             setBackValue,
             setHandsValue,
+            setAttributeCountValue,
+            setGenerationValue,
             setBurnInfo,
             0,
         );
@@ -109,6 +111,8 @@ export default function Rankings() {
                         setTailValue={setTailValue}
                         setBackValue={setBackValue}
                         setHandsValue={setHandsValue}
+                        setAttributeCountValue={setAttributeCountValue}
+                        setGenerationValue={setGenerationValue}
                         value={rankValue}
                         setImage={setImageSrc}
                         setRank={setRankValue}
@@ -129,6 +133,8 @@ export default function Rankings() {
                         setTailValue={setTailValue}
                         setBackValue={setBackValue}
                         setHandsValue={setHandsValue}
+                        setAttributeCountValue={setAttributeCountValue}
+                        setGenerationValue={setGenerationValue}
                         value={numValue}
                         setImage={setImageSrc}
                         setRank={setRankValue}
@@ -159,7 +165,7 @@ export default function Rankings() {
                         borderRadius: '5px',
                     }}
                 />
-                <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', marginTop: '30px', alignItems: 'center', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                         <AttributeValue name='Background' attribute={bgValue}/>
                         <AttributeValue name='Slug' attribute={slugValue}/>
@@ -174,6 +180,10 @@ export default function Rankings() {
                         <AttributeValue name='Tail' attribute={tailValue}/>
                         <AttributeValue name='Back' attribute={backValue}/>
                         <AttributeValue name='Hands' attribute={handsValue}/>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <AttributeValue name='Attribute Count' attribute={attributeCountValue}/>
+                        <AttributeValue name='Generation' attribute={generationValue}/>
                     </div>
                 </div>
             </div>
@@ -202,6 +212,8 @@ function Input(props: any) {
         setTailValue,
         setBackValue,
         setHandsValue,
+        setAttributeCountValue,
+        setGenerationValue,
         setRank,
         setName,
         name,
@@ -220,7 +232,6 @@ function Input(props: any) {
         }
 
         const preBurnItem = getItem(item.name.toString(), preBurnRankMap);
-
         const gainedRanks = preBurnItem.rank - item.rank;
 
         setItem(
@@ -237,6 +248,8 @@ function Input(props: any) {
             setTailValue,
             setBackValue,
             setHandsValue,
+            setAttributeCountValue,
+            setGenerationValue,
             setBurnInfo,
             gainedRanks,
         );
@@ -320,6 +333,8 @@ function setItem(
     setTailValue: any,
     setBackValue: any,
     setHandsValue: any,
+    setAttributeCountValue: any,
+    setGenerationValue: any,
     setBurnInfo: any,
     ranksGained: number,
 ) {
@@ -333,6 +348,8 @@ function setItem(
         ['Tail', setTailValue],
         ['Back', setBackValue],
         ['Hands', setHandsValue],
+        ['Attribute Count', setAttributeCountValue],
+        ['Generation', setGenerationValue],
     ]);
 
     for (const attribute of item.attributes) {
@@ -343,7 +360,7 @@ function setItem(
     setRank(item.rank);
     setName(item.name);
 
-    setImage(`/img/all/${item.name.toString().padStart(5, '0')}.png`);
+    setImage(item.image);
 
     if (ranksGained <= 0) {
         setBurnInfo('');
@@ -374,7 +391,20 @@ export async function fetchBurntData() {
     try {
         const data = await fetch(url);
 
-        return data.json();
+        const raw = await data.json();
+
+        for (let item of raw.tokenInfo) {
+            item.name = Number(item.name.split(' - ')[1]);
+
+            item.attributes.push(
+                getAttributeCount(item.attributes), {
+                    trait_type: 'Generation',
+                    value: item.generation.split(' ').splice(-1)[0],
+                },
+            );
+        }
+
+        return raw;
     } catch (err) {
         console.log(`Failed to fetch burn data: ${(err as any).toString()}!`);
         return undefined;
@@ -399,6 +429,21 @@ export function calculateStatRarity(items: any[]) {
     return rarityMap;
 }
 
+function getAttributeCount(attributes: any[]) {
+    let count = 0;
+
+    for (const attribute of attributes) {
+        if (attribute.value !== 'None') {
+            count++;
+        }
+    }
+
+    return {
+        trait_type: 'Attribute Count',
+        value: count,
+    };
+}
+
 export function calculateRarity(
     rarityMap: Map<string, any>,
     item: any,
@@ -410,8 +455,13 @@ export function calculateRarity(
 
     for (const layer of item.attributes) {
         const attributeCount = rarityMap.get(`${layer.trait_type}-${layer.value}`);
-        const rarityScore = 1 / (attributeCount / nftCount);
-        totalRarityScore += rarityScore;
+
+        if (layer.trait_type !== 'Generation') {
+            const rarityScore = 1 / (attributeCount / nftCount);
+
+            totalRarityScore += rarityScore;
+        }
+
         attributes.push({
             trait_type: layer.trait_type,
             value: layer.value + ` - ${((attributeCount / nftCount) * 100).toFixed(2)}%`,
@@ -441,6 +491,8 @@ export function calculateRanks(items: any[], field: string) {
             rarity,
             attributes,
             mint: item.mint,
+            image: item.image,
+            generation: item.generation,
         });
     }
 
