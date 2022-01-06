@@ -3,9 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { resetStyles } from './App';
 
-let slugMap = new Map();
-let rankMap = new Map();
-let preBurnRankMap = new Map();
+let burntData: any = undefined;
 
 export function Loading() {
     return (
@@ -30,6 +28,8 @@ export default function Rankings() {
     const [attributeCountValue, setAttributeCountValue] = React.useState('');
     const [generationValue, setGenerationValue] = React.useState('');
 
+    const [gensDisplayed, setGensDisplayed] = React.useState(0);
+
     const [rankValue, setRankValue] = React.useState('');
     const [numValue, setNumValue] = React.useState('');
 
@@ -39,31 +39,44 @@ export default function Rankings() {
 
     const [isLoading, setIsLoading] = React.useState(true);
 
-    async function loadData() {
-        resetStyles();
+    const [rankMap, setRankMap] = React.useState(new Map());
+    const [slugMap, setSlugMap] = React.useState(new Map());
+    const [preBurnRankMap, setPreBurnRankMap] = React.useState(new Map());
 
-        document.body.style.background = 'rgba(88, 44, 216, 1)';
+    function setupMaps() {
+        let filtered = {...burntData};
 
-        const burntData = await fetchBurntData();
-        const burntMap = createBurntMap(burntData);
+        if (gensDisplayed === 1) {
+            filtered.tokenInfo = burntData.tokenInfo.filter((s: any) => s.generation === 'Sol Slugs Generation 1');
+        } else if (gensDisplayed === 2) {
+            filtered.tokenInfo = burntData.tokenInfo.filter((s: any) => s.generation === 'Sol Slugs Generation 2');
+        }
+
+        const burntMap = createBurntMap(filtered);
 
         let nonBurnt = [];
 
-        for (const item of burntData.tokenInfo) {
+        for (const item of filtered.tokenInfo) {
+            console.log(item);
+
             if (!burntMap.get(item.mint)) {
                 nonBurnt.push(item);
             }
         }
 
-        preBurnRankMap = calculateRanks(burntData.tokenInfo, 'name');
-        rankMap = calculateRanks(nonBurnt, 'rank');
-        slugMap = calculateRanks(nonBurnt, 'name');
+        setPreBurnRankMap(calculateRanks(filtered.tokenInfo, 'name'));
+        const rMap = calculateRanks(nonBurnt, 'rank');
+        setRankMap(rMap);
+        setSlugMap(calculateRanks(nonBurnt, 'name'));
+
+        console.log(nonBurnt);
+        console.log(rMap);
 
         setItem(
             setRankValue,
             setNumValue,
             setImageSrc,
-            rankMap.get(1),
+            rMap.get(1),
             setBgValue,
             setSlugValue,
             setChestValue,
@@ -78,13 +91,34 @@ export default function Rankings() {
             setBurnInfo,
             0,
         );
+    }
+
+    async function loadData() {
+        resetStyles();
+
+        document.body.style.background = 'rgba(88, 44, 216, 1)';
+
+        burntData = await fetchBurntData();
+
+        setupMaps();
 
         setIsLoading(false);
     }
 
     React.useEffect(() => {
         loadData();
+    /* eslint-disable react-hooks/exhaustive-deps */
     }, []);
+
+    React.useEffect(() => {
+        if (burntData) {
+            setupMaps();
+        }
+    }, [gensDisplayed]);
+
+    function handleGenChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        setGensDisplayed(Number(e.target.value));
+    }
 
     if (isLoading) {
         return <Loading/>;
@@ -102,6 +136,7 @@ export default function Rankings() {
                     <Input
                         name={'Rank'}
                         map={rankMap}
+                        preBurnMap={preBurnRankMap}
                         setBgValue={setBgValue}
                         setSlugValue={setSlugValue}
                         setChestValue={setChestValue}
@@ -124,6 +159,7 @@ export default function Rankings() {
                         style={{ marginTop: '20px' }}
                         name={'Slug #'}
                         map={slugMap}
+                        preBurnMap={preBurnRankMap}
                         setBgValue={setBgValue}
                         setSlugValue={setSlugValue}
                         setChestValue={setChestValue}
@@ -142,6 +178,34 @@ export default function Rankings() {
                         setValue={setNumValue}
                         setBurnInfo={setBurnInfo}
                     />
+
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end', width: '310px', marginTop: '20px' }}>
+                        <span style={{ fontSize: '30px', textAlign: 'end', marginRight: '20px' }}>
+                            Generation
+                        </span>
+                        <select
+                            style={{
+                                height: '45px',
+                                fontSize: '30px',
+                                width: '110px',
+                                borderRadius: '5px',
+                                borderColor: 'white',
+                                borderStyle: 'solid',
+                                fontFamily: 'unset',
+                                textAlign: 'center',
+                                backgroundColor: 'transparent',
+                                borderWidth: '1px',
+                                color: 'white',
+                            }}
+                            value={gensDisplayed}
+                            onChange={handleGenChange}
+                        >
+                            <option value={0}>All</option>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                        </select>
+                    </div>
+
                     <div style={{
                         marginTop: '20px',
                     }}>
@@ -203,6 +267,7 @@ export default function Rankings() {
 function Input(props: any) {
     const {
         map,
+        preBurnMap,
         setBgValue,
         setSlugValue,
         setChestValue,
@@ -231,7 +296,7 @@ function Input(props: any) {
             return;
         }
 
-        const preBurnItem = getItem(item.name.toString(), preBurnRankMap);
+        const preBurnItem = getItem(item.name.toString(), preBurnMap);
         const gainedRanks = preBurnItem.rank - item.rank;
 
         setItem(
@@ -256,8 +321,8 @@ function Input(props: any) {
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', ...style }}>
-            <span style={{ fontSize: '30px', width: '90px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end', width: '310px', ...style }}>
+            <span style={{ fontSize: '30px', width: '90px', textAlign: 'end', marginRight: '10px' }}>
                 {name}
             </span>
             <input
