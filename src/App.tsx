@@ -30,6 +30,7 @@ function App() {
                                 <Link to='/attributes'>Attributes</Link>
                                 <Link to='/designer'>Designer</Link>
                                 <Link to='/graveyard'>Graveyard</Link>
+                                <a href='https://flip.solslugs.com/#'>Solana Slugs Coin Flip</a>
                             </nav>
                             <div className="frame__fill">
                             </div>
