@@ -549,3 +549,7 @@ a:focus {
     -webkit-text-fill-color: transparent;  
     animation: moveRainbow 200s linear infinite;
 }
+
+.gen-option {
+    background-color: rgba(88, 44, 216, 1);
+}

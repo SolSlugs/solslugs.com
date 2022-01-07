@@ -200,9 +200,15 @@ export default function Rankings() {
                             value={gensDisplayed}
                             onChange={handleGenChange}
                         >
-                            <option value={0}>All</option>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
+                            <option value={0} className='gen-option'>
+                                All
+                            </option>
+                            <option value={1} className='gen-option'>
+                                1
+                            </option>
+                            <option value={2} className='gen-option'>
+                                2
+                            </option>
                         </select>
                     </div>
 
