@@ -212,6 +212,7 @@ export default function Rankings() {
                         </select>
                     </div>
 
+                    
                     <div style={{
                         marginTop: '20px',
                     }}>
@@ -266,6 +267,17 @@ export default function Rankings() {
             }}>
                 {burnInfo}
             </div>
+
+            {gensDisplayed !== 1 && (
+                <div style={{ width: '100%', marginTop: '20px', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                    <div style={{ width: '50%' }}>
+                        <span style={{ fontSize: '20px', lineHeight: 1.5, textTransform: 'none' }}>
+                            A slug may be ranked higher/lower in all ranks compared to a single generations ranks. This is not a bug, and is due to the number of attributes being a factor in rarity, and certain attributes such as Ponytail and Tiddies being carried over into both gens. For example, a generation 2 slug with only 5 attributes is quite rare, but 5 attribute slugs are quite common in generation 1.
+
+                        </span>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
