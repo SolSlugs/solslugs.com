@@ -179,39 +179,40 @@ export default function Rankings() {
                         setBurnInfo={setBurnInfo}
                     />
 
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end', width: '310px', marginTop: '20px' }}>
-                        <span style={{ fontSize: '30px', textAlign: 'end', marginRight: '20px' }}>
-                            Generation
-                        </span>
-                        <select
-                            style={{
-                                height: '45px',
-                                fontSize: '30px',
-                                width: '110px',
-                                borderRadius: '5px',
-                                borderColor: 'white',
-                                borderStyle: 'solid',
-                                fontFamily: 'unset',
-                                textAlign: 'center',
-                                backgroundColor: 'transparent',
-                                borderWidth: '1px',
-                                color: 'white',
-                            }}
-                            value={gensDisplayed}
-                            onChange={handleGenChange}
-                        >
-                            <option value={0} className='gen-option'>
-                                All
-                            </option>
-                            <option value={1} className='gen-option'>
-                                1
-                            </option>
-                            <option value={2} className='gen-option'>
-                                2
-                            </option>
-                        </select>
-                    </div>
-
+                    {false && (
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'end', width: '310px', marginTop: '20px' }}>
+                            <span style={{ fontSize: '30px', textAlign: 'end', marginRight: '20px' }}>
+                                Generation
+                            </span>
+                            <select
+                                style={{
+                                    height: '45px',
+                                    fontSize: '30px',
+                                    width: '110px',
+                                    borderRadius: '5px',
+                                    borderColor: 'white',
+                                    borderStyle: 'solid',
+                                    fontFamily: 'unset',
+                                    textAlign: 'center',
+                                    backgroundColor: 'transparent',
+                                    borderWidth: '1px',
+                                    color: 'white',
+                                }}
+                                value={gensDisplayed}
+                                onChange={handleGenChange}
+                            >
+                                <option value={0} className='gen-option'>
+                                    All
+                                </option>
+                                <option value={1} className='gen-option'>
+                                    1
+                                </option>
+                                <option value={2} className='gen-option'>
+                                    2
+                                </option>
+                            </select>
+                        </div>
+                    )}
                     
                     <div style={{
                         marginTop: '20px',
@@ -268,7 +269,7 @@ export default function Rankings() {
                 {burnInfo}
             </div>
 
-            {gensDisplayed !== 1 && (
+            {false && (
                 <div style={{ width: '100%', marginTop: '20px', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
                     <div style={{ width: '50%' }}>
                         <span style={{ fontSize: '20px', lineHeight: 1.5, textTransform: 'none' }}>
