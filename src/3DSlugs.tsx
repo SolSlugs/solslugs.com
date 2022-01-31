@@ -1528,11 +1528,6 @@ export function ThreeDeeSlugs() {
                     }}>
                         * Is in slug gang (burnt 1, 5, 10, 25 slugs)
                     </span>
-                    <span style={{
-                        marginTop: '5px',
-                    }}>
-                        * Is in slug gang (burnt 1, 5, 10, 25 slugs)
-                    </span>
                     
                     <span style={{
                         marginTop: '40px',
