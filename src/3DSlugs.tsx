@@ -1533,7 +1533,24 @@ export function ThreeDeeSlugs() {
                     }}>
                         * Is in slug gang (burnt 1, 5, 10, 25 slugs)
                     </span>
+                    
+                    <span style={{
+                        marginTop: '40px',
+                    }}>
 
+                        To mint your slug, go <a
+                            style={{
+                                fontSize: '22px',
+                                color: 'white',
+                                fontWeight: 'initial',
+                                fontFamily: 'var(--title-family)',
+                                textDecoration: 'underline',
+                            }}
+                            href='https://solslugs.github.io/3d-slug-mint/'
+                        >
+                            here!
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>
