@@ -8,6 +8,7 @@ import { Attributes } from './Attributes';
 import { Designer } from './Designer';
 import { Loading } from './Rankings';
 import { Graveyard } from './Graveyard';
+import { ThreeDeeSlugs } from './3DSlugs';
 
 const Ranks = lazy(() => import('./Rankings'));
 
@@ -31,6 +32,7 @@ function App() {
                                 <Link to='/designer'>Designer</Link>
                                 <Link to='/graveyard'>Graveyard</Link>
                                 <a href='https://flip.solslugs.com/#'>Solana Slugs Coin Flip</a>
+                                <Link to='/3dslugs'>3D Slugs</Link>
                             </nav>
                             <div className="frame__fill">
                             </div>
@@ -56,6 +58,9 @@ function App() {
                             </Route>
                             <Route path='/graveyard'>
                                 <Graveyard/>
+                            </Route>
+                            <Route path='/3dslugs'>
+                                <ThreeDeeSlugs/>
                             </Route>
                         </Switch>
                     </div>
