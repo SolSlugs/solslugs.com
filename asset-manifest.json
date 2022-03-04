@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.449c1da4.chunk.css",
-    "main.js": "/static/js/main.6a080214.chunk.js",
-    "main.js.map": "/static/js/main.6a080214.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.1ab5d97b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.1ab5d97b.js.map",
-    "static/js/2.59095909.chunk.js": "/static/js/2.59095909.chunk.js",
-    "static/js/2.59095909.chunk.js.map": "/static/js/2.59095909.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.449c1da4.chunk.css.map": "/static/css/main.449c1da4.chunk.css.map",
-    "static/js/2.59095909.chunk.js.LICENSE.txt": "/static/js/2.59095909.chunk.js.LICENSE.txt",
-    "static/media/Arena.png": "/static/media/Arena.0d2f4255.png",
-    "static/media/Blood Moon.png": "/static/media/Blood Moon.88cf02df.png",
-    "static/media/Disco.png": "/static/media/Disco.ac4a87b4.png",
-    "static/media/Hell.png": "/static/media/Hell.27565113.png",
-    "static/media/SaviorBackground.png": "/static/media/SaviorBackground.312e57ca.png",
-    "static/media/Sluglantis.png": "/static/media/Sluglantis.d31ada22.png",
-    "static/media/App.css": "/static/media/agenda-bold.9a28f4b4.woff"
+    "main.css": "/solslugs.com/static/css/main.b0a2f094.chunk.css",
+    "main.js": "/solslugs.com/static/js/main.6a080214.chunk.js",
+    "main.js.map": "/solslugs.com/static/js/main.6a080214.chunk.js.map",
+    "runtime-main.js": "/solslugs.com/static/js/runtime-main.4e2d14ab.js",
+    "runtime-main.js.map": "/solslugs.com/static/js/runtime-main.4e2d14ab.js.map",
+    "static/js/2.59095909.chunk.js": "/solslugs.com/static/js/2.59095909.chunk.js",
+    "static/js/2.59095909.chunk.js.map": "/solslugs.com/static/js/2.59095909.chunk.js.map",
+    "index.html": "/solslugs.com/index.html",
+    "static/css/main.b0a2f094.chunk.css.map": "/solslugs.com/static/css/main.b0a2f094.chunk.css.map",
+    "static/js/2.59095909.chunk.js.LICENSE.txt": "/solslugs.com/static/js/2.59095909.chunk.js.LICENSE.txt",
+    "static/media/Arena.png": "/solslugs.com/static/media/Arena.0d2f4255.png",
+    "static/media/Blood Moon.png": "/solslugs.com/static/media/Blood Moon.88cf02df.png",
+    "static/media/Disco.png": "/solslugs.com/static/media/Disco.ac4a87b4.png",
+    "static/media/Hell.png": "/solslugs.com/static/media/Hell.27565113.png",
+    "static/media/SaviorBackground.png": "/solslugs.com/static/media/SaviorBackground.312e57ca.png",
+    "static/media/Sluglantis.png": "/solslugs.com/static/media/Sluglantis.d31ada22.png",
+    "static/media/App.css": "/solslugs.com/static/media/agenda-bold.9a28f4b4.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.1ab5d97b.js",
+    "static/js/runtime-main.4e2d14ab.js",
     "static/js/2.59095909.chunk.js",
-    "static/css/main.449c1da4.chunk.css",
+    "static/css/main.b0a2f094.chunk.css",
     "static/js/main.6a080214.chunk.js"
   ]
 }
